@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PAP_TICKETSG8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PAP_TICKETS">
+          <Key>
+            <PropertyRef Name="TICKET_ID" />
+          </Key>
+          <Property Name="TICKET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TICKET_CODE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EVENT_NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TICKET_TYPE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PRICE" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CUSTOMER_EMAIL" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="EVENT_DATE" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="REGISTRATION_DATE" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="MODIFICATION_DATE" Type="datetime2" Precision="0" />
+          <Property Name="STATUS" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PAP_TICKETSG8ModelStoreContainer">
+          <EntitySet Name="PAP_TICKETS" EntityType="Self.PAP_TICKETS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PAP_TICKETSG8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PAP_TICKETS">
+          <Key>
+            <PropertyRef Name="TICKET_ID" />
+          </Key>
+          <Property Name="TICKET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TICKET_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EVENT_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TICKET_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUSTOMER_EMAIL" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EVENT_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="REGISTRATION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MODIFICATION_DATE" Type="DateTime" Precision="0" />
+          <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PAP_TICKETSG8Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PAP_TICKETS" EntityType="Self.PAP_TICKETS" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PAP_TICKETSG8ModelStoreContainer" CdmEntityContainer="PAP_TICKETSG8Entities">
+          <EntitySetMapping Name="PAP_TICKETS">
+            <EntityTypeMapping TypeName="PAP_TICKETSG8Model.PAP_TICKETS">
+              <MappingFragment StoreEntitySet="PAP_TICKETS">
+                <ScalarProperty Name="TICKET_ID" ColumnName="TICKET_ID" />
+                <ScalarProperty Name="TICKET_CODE" ColumnName="TICKET_CODE" />
+                <ScalarProperty Name="EVENT_NAME" ColumnName="EVENT_NAME" />
+                <ScalarProperty Name="TICKET_TYPE" ColumnName="TICKET_TYPE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="CUSTOMER_EMAIL" ColumnName="CUSTOMER_EMAIL" />
+                <ScalarProperty Name="EVENT_DATE" ColumnName="EVENT_DATE" />
+                <ScalarProperty Name="REGISTRATION_DATE" ColumnName="REGISTRATION_DATE" />
+                <ScalarProperty Name="MODIFICATION_DATE" ColumnName="MODIFICATION_DATE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
