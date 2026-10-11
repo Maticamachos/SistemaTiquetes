@@ -188,11 +188,11 @@
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Rol\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Tiquete\" />
-    <Folder Include="Views\Rol\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

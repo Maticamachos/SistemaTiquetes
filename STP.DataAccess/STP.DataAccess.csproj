@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="STP_ESTADO.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
@@ -110,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\STP.Models\STP.Models.csproj">
+      <Project>{02d76d45-7354-4848-900f-f884c9a01144}</Project>
+      <Name>STP.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STP.DataAccess", "STP.DataA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STP.Models", "STP.Models\STP.Models.csproj", "{02D76D45-7354-4848-900F-F884C9A01144}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "STP.SQLV1", "STP.SQLV1", "{62FBF87D-F38E-4A80-BD20-290F5613EB8E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\joels\Downloads\Progra Avanzada\SQLV1_G8sql.sql = ..\..\..\Users\joels\Downloads\Progra Avanzada\SQLV1_G8sql.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STP.Repositories", "STP.Repositories\STP.Repositories.csproj", "{E090744D-2C01-40F1-94C2-5CFF91C8733B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +34,10 @@ Global
 		{02D76D45-7354-4848-900F-F884C9A01144}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D76D45-7354-4848-900F-F884C9A01144}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D76D45-7354-4848-900F-F884C9A01144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E090744D-2C01-40F1-94C2-5CFF91C8733B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E090744D-2C01-40F1-94C2-5CFF91C8733B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E090744D-2C01-40F1-94C2-5CFF91C8733B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E090744D-2C01-40F1-94C2-5CFF91C8733B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
