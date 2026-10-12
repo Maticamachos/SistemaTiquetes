@@ -7,9 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using STP.DataAccess;
 
+
 namespace STP.Repositories
 {
-    public class StatusRepository : RepositoryBase<Status>
+    public class StatusRepository : RepositoryBase<STP_ESTADO>
 
     {
     }

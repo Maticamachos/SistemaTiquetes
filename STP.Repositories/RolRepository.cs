@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using STP.DataAccess;
 
+
 namespace STP.Repositories
 {
-    public class RolRepository : RepositoryBase<Rol>
+    public class RolRepository : RepositoryBase<STP_ROL>
     {
     }
 }

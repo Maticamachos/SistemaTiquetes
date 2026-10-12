@@ -10,6 +10,6 @@ namespace STP.DataAccess
     public class DataAccess
     {
 
-
+        
     }
 }

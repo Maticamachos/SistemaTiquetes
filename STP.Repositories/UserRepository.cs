@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using STP.DataAccess;
 
+
 namespace STP.Repositories
 {
-    public class UserRepository : RepositoryBase<User>
+    public class UserRepository : RepositoryBase<STP_USUARIO>
     {
     }
 }
