@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class RolSController : Controller
+    public class RolController : Controller
     {
         private readonly RolManager _rolManager;
 
-        public RolSController()
+        public RolController()
         {
             _rolManager = new RolManager();
         }
