@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STP.Models", "STP.Models\ST
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "STP.SQLV1", "STP.SQLV1", "{62FBF87D-F38E-4A80-BD20-290F5613EB8E}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Users\joels\Downloads\Progra Avanzada\SQLV1_G8sql.sql = ..\..\..\Users\joels\Downloads\Progra Avanzada\SQLV1_G8sql.sql
+		..\..\..\Downloads\SQLV1_G8sql.sql = ..\..\..\Downloads\SQLV1_G8sql.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STP.Repositories", "STP.Repositories\STP.Repositories.csproj", "{E090744D-2C01-40F1-94C2-5CFF91C8733B}"

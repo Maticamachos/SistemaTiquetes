@@ -1,0 +1,35 @@
+﻿@model STP.DataAccess.STP_ROL
+
+@{
+    ViewBag.Title = "Crear Nuevo Rol";
+}
+
+<main class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                @using (Html.BeginForm("Create", "Roles", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="card-header bg-dark text-white">
+                        <h1 class="h4 mb-0">Crear Nuevo Rol</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            @Html.TextBoxFor(m => m.NOMBRE, new { @class = "form-control", required = "required" })
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            @Html.TextBoxFor(m => m.DESCRIPCION, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        @Html.ActionLink("Cancelar", "Index", "Roles", null, new { @class = "btn btn-outline-dark btn-sm" })
+                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>

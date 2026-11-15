@@ -19,9 +19,29 @@ namespace STP.Services
             _repository = new TicketRepository();
         }
 
-        public IEnumerable<STP_TICKET> GetAllTickets()
+        public IEnumerable<STP_TICKET> GetAllTicketsFromDataModel()
         {
             return _repository.GetAll();
+        }
+
+        public STP_TICKET GetTicketFromID(int id)
+        {
+            return _repository.GetById(id);
+        }
+
+        public void Add(STP_TICKET ticket)
+        {
+            _repository.Add(ticket);
+        }
+
+        public void Update(STP_TICKET ticket)
+        {
+            _repository.Update(ticket);
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
         }
     }
 }

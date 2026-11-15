@@ -127,11 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Detalles.cs" />
-    <Compile Include="Controllers\Editar.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Listar.cs" />
-    <Compile Include="Controllers\Registrar.cs" />
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
@@ -196,6 +192,13 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Rol\Index.cshtml" />
+    <Content Include="Views\Rol\CrearRol.cshtml" />
+    <Content Include="Views\Rol\DetallesRol.cshtml" />
+    <Content Include="Views\Rol\EliminarRol.cshtml" />
+    <Content Include="Views\Status\CrearEstado.cshtml" />
+    <Content Include="Views\Status\DetallesEstado.cshtml" />
+    <Content Include="Views\Status\EliminarEstado.cshtml" />
+    <Content Include="Views\Rol\EditRol.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,6 +230,20 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\STP.DataAccess\STP.DataAccess.csproj">
+      <Project>{3232459f-46bd-418b-a7fe-587108ebf3ea}</Project>
+      <Name>STP.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\STP.Repositories\STP.Repositories.csproj">
+      <Project>{e090744d-2c01-40f1-94c2-5cff91c8733b}</Project>
+      <Name>STP.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\STP.Services\STP.Services.csproj">
+      <Project>{4eea8c49-fd45-4848-8d48-25427728d419}</Project>
+      <Name>STP.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

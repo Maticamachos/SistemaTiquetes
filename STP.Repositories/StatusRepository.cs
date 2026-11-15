@@ -13,5 +13,11 @@ namespace STP.Repositories
     public class StatusRepository : RepositoryBase<STP_ESTADO>
 
     {
+
+        public IEnumerable<STP_ESTADO> MyStatus()
+        {
+            return _context.Set<STP_ESTADO>().ToList();
+        }
+
     }
 }

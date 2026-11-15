@@ -10,6 +10,13 @@ using STP.DataAccess;
 namespace STP.Repositories
 {
     public class UserRepository : RepositoryBase<STP_USUARIO>
+
     {
+
+        public IEnumerable<STP_USUARIO> MyUsers()
+        {
+            return _context.Set<STP_USUARIO>().ToList();
+        }
+
     }
 }

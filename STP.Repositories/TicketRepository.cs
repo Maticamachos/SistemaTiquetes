@@ -10,6 +10,13 @@ using STP.DataAccess;
 namespace STP.Repositories
 {
     public class TicketRepository : RepositoryBase<STP_TICKET>
+
     {
+
+        public IEnumerable<STP_TICKET> MyTickets()
+        {
+            return _context.Set<STP_TICKET>().ToList();
+        }
+
     }
 }

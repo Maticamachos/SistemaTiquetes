@@ -9,18 +9,41 @@ using STP.DataAccess;
 
 namespace STP.Services
 {
-public class UseerManager
+    public class UserManager
     {
         private readonly UserRepository _repository;
 
-        public UseerManager()
+        public UserManager()
         {
             _repository = new UserRepository();
+
+
+
         }
 
-        public IEnumerable<STP_USUARIO> GetAllTickets()
+        public IEnumerable<STP_USUARIO> GetAllUsuariosFromDataModel()
         {
             return _repository.GetAll();
+        }
+
+        public STP_USUARIO GetUsuarioFromID(int id)
+        {
+            return _repository.GetById(id);
+        }
+
+        public void Add(STP_USUARIO usuario)
+        {
+            _repository.Add(usuario);
+        }
+
+        public void Update(STP_USUARIO usuario)
+        {
+            _repository.Update(usuario);
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
         }
     }
 }
