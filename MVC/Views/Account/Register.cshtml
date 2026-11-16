@@ -1,0 +1,115 @@
+﻿@model MVC.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Crear cuenta";
+}
+
+<div class="row justify-content-center py-5">
+    <div class="col-12 col-md-7 col-lg-5">
+        <section class="card border-0 shadow-sm rounded-4 p-4">
+            <div class="card-body">
+                <p class="text-primary fw-bold small">
+                    SISTEMA DE TIQUETES
+                </p>
+
+                <h1 class="h2 fw-bold">Creá tu cuenta</h1>
+
+                <p class="text-muted mb-4">
+                    Completá tus datos para registrarte.
+                </p>
+
+                @if (ViewBag.Mensaje != null)
+                {
+                    <div class="alert alert-info" role="status">
+                        @ViewBag.Mensaje
+                    </div>
+                }
+
+                @using (Html.BeginForm(
+                    "Register", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(
+                             true, "", new { @class = "text-danger" })
+
+                    <div class="mb-3">
+                        @Html.LabelFor(
+                                 m => m.Email,
+                                 new { @class = "form-label" })
+
+                        @Html.TextBoxFor(
+                                 m => m.Email,
+                                 new
+                                 {
+                                     @class = "form-control w-100",
+                                     style = "max-width:none",
+                                     type = "email",
+                                     placeholder = "nombre@correo.com",
+                                     autocomplete = "username"
+                                 })
+
+                        @Html.ValidationMessageFor(
+                                 m => m.Email, "",
+                                 new { @class = "text-danger small" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(
+                                 m => m.Password,
+                                 new { @class = "form-label" })
+
+                        @Html.PasswordFor(
+                                 m => m.Password,
+                                 new
+                                 {
+                                     @class = "form-control w-100",
+                                     style = "max-width:none",
+                                     placeholder = "Mínimo 8 caracteres",
+                                     autocomplete = "new-password"
+                                 })
+
+                        @Html.ValidationMessageFor(
+                                 m => m.Password, "",
+                                 new { @class = "text-danger small" })
+                    </div>
+
+                    <div class="mb-4">
+                        @Html.LabelFor(
+                                 m => m.ConfirmPassword,
+                                 new { @class = "form-label" })
+
+                        @Html.PasswordFor(
+                                 m => m.ConfirmPassword,
+                                 new
+                                 {
+                                     @class = "form-control w-100",
+                                     style = "max-width:none",
+                                     placeholder = "Repetí tu contraseña",
+                                     autocomplete = "new-password"
+                                 })
+
+                        @Html.ValidationMessageFor(
+                                 m => m.ConfirmPassword, "",
+                                 new { @class = "text-danger small" })
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100 py-2">
+                        Crear cuenta
+                    </button>
+                }
+
+                <p class="text-center mt-4 mb-0">
+                    ¿Ya tenés cuenta?
+                    @Html.ActionLink(
+                             "Iniciá sesión", "Login", "Account")
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
