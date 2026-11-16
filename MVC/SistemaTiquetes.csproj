@@ -134,6 +134,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Listar.cs" />
     <Compile Include="Controllers\Registrar.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,6 +142,15 @@
       <DependentUpon>TicketModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="STP_ESTADO.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ROL.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_USUARIO.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TicketModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +166,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TicketModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CrearUsuarioViewModel.cs" />
+    <Compile Include="ViewModels\EditarUsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -225,6 +237,9 @@
     <Content Include="TicketModel.edmx.diagram">
       <DependentUpon>TicketModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

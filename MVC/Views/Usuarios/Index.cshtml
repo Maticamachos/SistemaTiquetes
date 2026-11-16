@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MVC.STP_USUARIO>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>Usuarios</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Mensaje"]
+    </div>
+}
+
+<p>
+    @Html.ActionLink(
+            "Nuevo usuario",
+            "Create",
+            "Usuarios",
+            null,
+            new { @class = "btn btn-primary" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre completo</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Estado</th>
+                <th>Último inicio de sesión</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>
+                        @usuario.NOMBRE
+                        @usuario.PRIMER_APELLIDO
+                        @usuario.SEGUNDO_APELLIDO
+                    </td>
+                    <td>@usuario.CORREO</td>
+                    <td>@usuario.STP_ROL.NOMBRE</td>
+                    <td>@usuario.STP_ESTADO.NOMBRE_ESTADO</td>
+                    <td>
+                        @(usuario.ULTIMO_INICIO_SESION.HasValue
+                            ? usuario.ULTIMO_INICIO_SESION.Value.ToString("dd/MM/yyyy")
+                            : "Sin registro")
+                    </td>
+                    <td>
+                        @Html.ActionLink(
+                                "Editar",
+                                "Edit",
+                                new { id = usuario.USUARIO_ID },
+                                new { @class = "btn btn-outline-primary btn-sm" })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (!Model.Any())
+{
+    <p>No hay usuarios registrados.</p>
+}

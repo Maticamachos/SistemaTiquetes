@@ -1,0 +1,135 @@
+﻿@model MVC.ViewModels.EditarUsuarioViewModel
+
+@{
+    ViewBag.Title = "Editar usuario";
+}
+
+<h2>Editar usuario</h2>
+
+@using (Html.BeginForm(
+    "Edit",
+    "Usuarios",
+    new { id = Model.UsuarioId },
+    FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.UsuarioId)
+
+    @Html.ValidationSummary(
+            true,
+            "",
+            new { @class = "text-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(
+                 m => m.Nombre,
+                 new { @class = "form-label" })
+
+        @Html.TextBoxFor(
+                 m => m.Nombre,
+                 new { @class = "form-control", maxlength = "100" })
+
+        @Html.ValidationMessageFor(
+                 m => m.Nombre,
+                 "",
+                 new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(
+                 m => m.PrimerApellido,
+                 new { @class = "form-label" })
+
+        @Html.TextBoxFor(
+                 m => m.PrimerApellido,
+                 new { @class = "form-control", maxlength = "100" })
+
+        @Html.ValidationMessageFor(
+                 m => m.PrimerApellido,
+                 "",
+                 new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(
+                 m => m.SegundoApellido,
+                 new { @class = "form-label" })
+
+        @Html.TextBoxFor(
+                 m => m.SegundoApellido,
+                 new { @class = "form-control", maxlength = "100" })
+
+        @Html.ValidationMessageFor(
+                 m => m.SegundoApellido,
+                 "",
+                 new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(
+                 m => m.Correo,
+                 new { @class = "form-label" })
+
+        @Html.TextBoxFor(
+                 m => m.Correo,
+                 new
+                 {
+                     @class = "form-control",
+                     type = "email",
+                     maxlength = "100"
+                 })
+
+        @Html.ValidationMessageFor(
+                 m => m.Correo,
+                 "",
+                 new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(
+                 m => m.RolId,
+                 new { @class = "form-label" })
+
+        @Html.DropDownListFor(
+                 m => m.RolId,
+                 (SelectList)ViewBag.Roles,
+                 "Seleccione un rol",
+                 new { @class = "form-select" })
+
+        @Html.ValidationMessageFor(
+                 m => m.RolId,
+                 "",
+                 new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(
+                 m => m.EstadoId,
+                 new { @class = "form-label" })
+
+        @Html.DropDownListFor(
+                 m => m.EstadoId,
+                 (SelectList)ViewBag.Estados,
+                 "Seleccione un estado",
+                 new { @class = "form-select" })
+
+        @Html.ValidationMessageFor(
+                 m => m.EstadoId,
+                 "",
+                 new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Guardar cambios
+    </button>
+
+    @Html.ActionLink(
+            "Volver al listado",
+            "Index",
+            null,
+            new { @class = "btn btn-secondary" })
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

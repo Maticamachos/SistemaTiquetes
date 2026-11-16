@@ -6,7 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8b72e521a363452885b60dc4f591dd67" Name="Diagram1">
         <EntityTypeShape EntityType="PAP_TICKETSG8Model.PAP_TICKETS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-      </Diagram>
+        <EntityTypeShape EntityType="PAP_TICKETSG8Model.STP_ESTADO" Width="1.5" PointX="3.375" PointY="5.625" />
+        <EntityTypeShape EntityType="PAP_TICKETSG8Model.STP_ROL" Width="1.5" PointX="3.375" PointY="1.5" />
+        <EntityTypeShape EntityType="PAP_TICKETSG8Model.STP_USUARIO" Width="1.5" PointX="5.625" PointY="1" />
+        <AssociationConnector Association="PAP_TICKETSG8Model.PAP_USUARIO_ESTADO_FK" />
+        <AssociationConnector Association="PAP_TICKETSG8Model.PAP_USUARIO_ROL_FK" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

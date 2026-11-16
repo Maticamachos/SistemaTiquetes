@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PAP_TICKETSG8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PAP_TICKETSG8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="PAP_TICKETS">
           <Key>
             <PropertyRef Name="TICKET_ID" />
@@ -21,11 +21,73 @@
           <Property Name="MODIFICATION_DATE" Type="datetime2" Precision="0" />
           <Property Name="STATUS" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="STP_ESTADO">
+          <Key>
+            <PropertyRef Name="ESTADO_ID" />
+          </Key>
+          <Property Name="ESTADO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_ESTADO" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STP_ROL">
+          <Key>
+            <PropertyRef Name="ROL_ID" />
+          </Key>
+          <Property Name="ROL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="STP_USUARIO">
+          <Key>
+            <PropertyRef Name="USUARIO_ID" />
+          </Key>
+          <Property Name="USUARIO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PRIMER_APELLIDO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SEGUNDO_APELLIDO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CORREO" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ESTADO_ID" Type="int" Nullable="false" />
+          <Property Name="ROL_ID" Type="int" Nullable="false" />
+          <Property Name="ULTIMO_INICIO_SESION" Type="date" />
+        </EntityType>
+        <Association Name="PAP_USUARIO_ESTADO_FK">
+          <End Role="STP_ESTADO" Type="Self.STP_ESTADO" Multiplicity="1" />
+          <End Role="STP_USUARIO" Type="Self.STP_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STP_ESTADO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Principal>
+            <Dependent Role="STP_USUARIO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PAP_USUARIO_ROL_FK">
+          <End Role="STP_ROL" Type="Self.STP_ROL" Multiplicity="1" />
+          <End Role="STP_USUARIO" Type="Self.STP_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STP_ROL">
+              <PropertyRef Name="ROL_ID" />
+            </Principal>
+            <Dependent Role="STP_USUARIO">
+              <PropertyRef Name="ROL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PAP_TICKETSG8ModelStoreContainer">
           <EntitySet Name="PAP_TICKETS" EntityType="Self.PAP_TICKETS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STP_ESTADO" EntityType="Self.STP_ESTADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STP_ROL" EntityType="Self.STP_ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STP_USUARIO" EntityType="Self.STP_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="PAP_USUARIO_ESTADO_FK" Association="Self.PAP_USUARIO_ESTADO_FK">
+            <End Role="STP_ESTADO" EntitySet="STP_ESTADO" />
+            <End Role="STP_USUARIO" EntitySet="STP_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="PAP_USUARIO_ROL_FK" Association="Self.PAP_USUARIO_ROL_FK">
+            <End Role="STP_ROL" EntitySet="STP_ROL" />
+            <End Role="STP_USUARIO" EntitySet="STP_USUARIO" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PAP_TICKETSG8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -47,7 +109,74 @@
         </EntityType>
         <EntityContainer Name="PAP_TICKETSG8Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PAP_TICKETS" EntityType="Self.PAP_TICKETS" />
+          <EntitySet Name="STP_ESTADO" EntityType="PAP_TICKETSG8Model.STP_ESTADO" />
+          <EntitySet Name="STP_ROL" EntityType="PAP_TICKETSG8Model.STP_ROL" />
+          <EntitySet Name="STP_USUARIO" EntityType="PAP_TICKETSG8Model.STP_USUARIO" />
+          <AssociationSet Name="PAP_USUARIO_ESTADO_FK" Association="PAP_TICKETSG8Model.PAP_USUARIO_ESTADO_FK">
+            <End Role="STP_ESTADO" EntitySet="STP_ESTADO" />
+            <End Role="STP_USUARIO" EntitySet="STP_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="PAP_USUARIO_ROL_FK" Association="PAP_TICKETSG8Model.PAP_USUARIO_ROL_FK">
+            <End Role="STP_ROL" EntitySet="STP_ROL" />
+            <End Role="STP_USUARIO" EntitySet="STP_USUARIO" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="STP_ESTADO">
+          <Key>
+            <PropertyRef Name="ESTADO_ID" />
+          </Key>
+          <Property Name="ESTADO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_ESTADO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="STP_USUARIO" Relationship="PAP_TICKETSG8Model.PAP_USUARIO_ESTADO_FK" FromRole="STP_ESTADO" ToRole="STP_USUARIO" />
+        </EntityType>
+        <EntityType Name="STP_ROL">
+          <Key>
+            <PropertyRef Name="ROL_ID" />
+          </Key>
+          <Property Name="ROL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="STP_USUARIO" Relationship="PAP_TICKETSG8Model.PAP_USUARIO_ROL_FK" FromRole="STP_ROL" ToRole="STP_USUARIO" />
+        </EntityType>
+        <EntityType Name="STP_USUARIO">
+          <Key>
+            <PropertyRef Name="USUARIO_ID" />
+          </Key>
+          <Property Name="USUARIO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PRIMER_APELLIDO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SEGUNDO_APELLIDO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO_ID" Type="Int32" Nullable="false" />
+          <Property Name="ROL_ID" Type="Int32" Nullable="false" />
+          <Property Name="ULTIMO_INICIO_SESION" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="STP_ESTADO" Relationship="PAP_TICKETSG8Model.PAP_USUARIO_ESTADO_FK" FromRole="STP_USUARIO" ToRole="STP_ESTADO" />
+          <NavigationProperty Name="STP_ROL" Relationship="PAP_TICKETSG8Model.PAP_USUARIO_ROL_FK" FromRole="STP_USUARIO" ToRole="STP_ROL" />
+        </EntityType>
+        <Association Name="PAP_USUARIO_ESTADO_FK">
+          <End Type="PAP_TICKETSG8Model.STP_ESTADO" Role="STP_ESTADO" Multiplicity="1" />
+          <End Type="PAP_TICKETSG8Model.STP_USUARIO" Role="STP_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STP_ESTADO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Principal>
+            <Dependent Role="STP_USUARIO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PAP_USUARIO_ROL_FK">
+          <End Type="PAP_TICKETSG8Model.STP_ROL" Role="STP_ROL" Multiplicity="1" />
+          <End Type="PAP_TICKETSG8Model.STP_USUARIO" Role="STP_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STP_ROL">
+              <PropertyRef Name="ROL_ID" />
+            </Principal>
+            <Dependent Role="STP_USUARIO">
+              <PropertyRef Name="ROL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -68,6 +197,37 @@
                 <ScalarProperty Name="REGISTRATION_DATE" ColumnName="REGISTRATION_DATE" />
                 <ScalarProperty Name="MODIFICATION_DATE" ColumnName="MODIFICATION_DATE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STP_ESTADO">
+            <EntityTypeMapping TypeName="PAP_TICKETSG8Model.STP_ESTADO">
+              <MappingFragment StoreEntitySet="STP_ESTADO">
+                <ScalarProperty Name="NOMBRE_ESTADO" ColumnName="NOMBRE_ESTADO" />
+                <ScalarProperty Name="ESTADO_ID" ColumnName="ESTADO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STP_ROL">
+            <EntityTypeMapping TypeName="PAP_TICKETSG8Model.STP_ROL">
+              <MappingFragment StoreEntitySet="STP_ROL">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ROL_ID" ColumnName="ROL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STP_USUARIO">
+            <EntityTypeMapping TypeName="PAP_TICKETSG8Model.STP_USUARIO">
+              <MappingFragment StoreEntitySet="STP_USUARIO">
+                <ScalarProperty Name="ULTIMO_INICIO_SESION" ColumnName="ULTIMO_INICIO_SESION" />
+                <ScalarProperty Name="ROL_ID" ColumnName="ROL_ID" />
+                <ScalarProperty Name="ESTADO_ID" ColumnName="ESTADO_ID" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="SEGUNDO_APELLIDO" ColumnName="SEGUNDO_APELLIDO" />
+                <ScalarProperty Name="PRIMER_APELLIDO" ColumnName="PRIMER_APELLIDO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
